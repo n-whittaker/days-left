@@ -41,3 +41,62 @@ table {
     border-collapse: collapse;
     border-spacing: 0;
 }
+
+:root * {
+    box-sizing: border-box;
+    border: 1px solid  black;
+    font-size: 16px;
+}
+
+main {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+}
+
+.middle.container {
+    flex-shrink: 1;
+}
+
+.card {
+    width: 80%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.figure {
+    flex: 5;
+    text-align: center;
+}
+
+.figure-text {
+    flex: 2;
+    text-align: center;
+ }
+
+.figure, .figure-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.figure > h1 {
+    font-size: clamp(13rem, 40vw, 16rem);
+/*     Font size isn't working??*/
+}
+
+.figure-text > p, .measurement {
+    font-size: clamp(1.5rem, 5vw, 13rem);
+}
+
+
+
