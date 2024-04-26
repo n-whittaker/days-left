@@ -1,6 +1,6 @@
-let fig = document.querySelector(".figure");
+let fig = document.querySelector(".figure-num");
 
-const leaveDate = new Date("2024-06-13");
+const leaveDate = new Date("2024-06-14");
 const today = new Date();
 
 const difMilliSeconds = leaveDate - today;
@@ -16,6 +16,11 @@ console.log(difHours + " Hours")
 console.log(difDays + " Days")
 
 fig.textContent = Math.round(difDays).toString()
+
+
+let units = {"Seconds":difSeconds, "Minutes":difMinutes, "Hours":difHours};
+
+let btn
 
 
 
