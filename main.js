@@ -22,19 +22,28 @@ const btnLeft = document.querySelector(".btnLeft")
 const btnRight = document.querySelector(".btnRight")
 
 
-const units = [difMilliSeconds, difSeconds, difMinutes, difHours, difDays];
-const words = ["Milliseconds", "Seconds", "Minutes", "Hours", "Days"];
+const units = [difSeconds, difMinutes, difHours, difDays];
+const words = ["Seconds", "Minutes", "Hours", "Days"];
 let currentUnit = 0;
 
 
 btnLeft.addEventListener('click', () => {
+    if (currentUnit !== 0) {
+        currentUnit -= 1;
+    } else {
+        currentUnit = units.length - 1;
+    }
+
+    updateUnits();
+})
+
+btnRight.addEventListener('click', () => {
     if (currentUnit !== units.length - 1) {
         currentUnit += 1;
     } else {
-        currentUnit = 0;
+        currentUnit = 0 ;
     }
 
-    console.log(currentUnit, units.length)
     updateUnits();
 })
 
