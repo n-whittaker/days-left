@@ -1,4 +1,5 @@
 let fig = document.querySelector(".figure-num");
+let word = document.querySelector(".unit")
 
 const leaveDate = new Date("2024-06-14");
 const today = new Date();
@@ -15,12 +16,34 @@ console.log(difMinutes + " Minutes")
 console.log(difHours + " Hours")
 console.log(difDays + " Days")
 
-fig.textContent = Math.round(difDays).toString()
+fig.textContent = Math.round(difMilliSeconds).toString()
+
+const btnLeft = document.querySelector(".btnLeft")
+const btnRight = document.querySelector(".btnRight")
 
 
-let units = {"Seconds":difSeconds, "Minutes":difMinutes, "Hours":difHours};
+const units = [difMilliSeconds, difSeconds, difMinutes, difHours, difDays];
+const words = ["Milliseconds", "Seconds", "Minutes", "Hours", "Days"];
+let currentUnit = 0;
 
-let btn
+
+btnLeft.addEventListener('click', () => {
+    if (currentUnit !== units.length - 1) {
+        currentUnit += 1;
+    } else {
+        currentUnit = 0;
+    }
+
+    console.log(currentUnit, units.length)
+    updateUnits();
+})
+
+
+function updateUnits() {
+    fig.textContent = Math.round(units[currentUnit]).toString()
+    word.textContent =  words[currentUnit]
+}
+
 
 
 
