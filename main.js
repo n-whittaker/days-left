@@ -13,6 +13,16 @@ let difWeeks = difDays / 7;
 let difMonths = difWeeks / 4;
 let difYears = difDays / 365 * 100;
 
+let tab1 = document.querySelector('.tab1');
+let tab2 = document.querySelector('.tab2');
+let tab3 = document.querySelector('.tab3');
+let tab4 = document.querySelector('.tab4');
+let tab5 = document.querySelector('.tab5');
+let tab6 = document.querySelector('.tab6');
+let tab7 = document.querySelector('.tab7');
+let tab8 = document.querySelector('.tab8');
+
+
 
 
 fig.textContent = Math.round(difMilliSeconds).toString()
@@ -23,8 +33,10 @@ const btnRight = document.querySelector(".btnRight")
 
 const units = [difMilliSeconds, difSeconds, difMinutes, difHours, difDays, difWeeks, difMonths, difYears];
 const words = ["Milliseconds", "Seconds", "Minutes", "Hours", "Days", "Weeks", "Months", "Years"];
+const tabs = [tab1, tab2, tab3, tab4, tab5, tab6, tab7, tab8]
 let currentUnit = 0;
 
+tab1.style.backgroundColor = '#F4CE14'
 
 btnLeft.addEventListener('click', () => {
     // Iterate through the array of units
@@ -35,7 +47,10 @@ btnLeft.addEventListener('click', () => {
         currentUnit = units.length - 1;
     }
 
-    updateUnits();
+    updateTime();
+    updateText()
+    updateCurrentTab()
+
 })
 
 btnRight.addEventListener('click', () => {
@@ -47,11 +62,15 @@ btnRight.addEventListener('click', () => {
         currentUnit = 0 ;
     }
 
-    updateUnits();
+    updateTime();
+    updateText();
+    updateCurrentTab();
+
+
 })
 
 
-function updateUnits() {
+function updateTime() {
     now = new Date(); // Get the current time each time the function is called
     // Re calculate variables
     difMilliSeconds = leaveDate - now
@@ -72,8 +91,10 @@ function updateUnits() {
     units[5] = difWeeks;
     units[6] = difMonths;
     units[7] = difYears;
+}
 
 
+function updateText() {
     if (currentUnit >= 5) {
         fig.textContent = parseFloat(units[currentUnit].toFixed(2).toString())
     } else {
@@ -83,8 +104,14 @@ function updateUnits() {
     word.textContent =  words[currentUnit]
 }
 
+function updateCurrentTab() {
+    for (let tab of tabs) {
+        tab.style.backgroundColor = '#cecece';
+    }
 
-
-setInterval(updateUnits, 100);
+    tabs[currentUnit].style.backgroundColor = '#F4CE14';
+}
+// Below line makes the code update live.
+// setInterval(updateUnits, 100);
 
 

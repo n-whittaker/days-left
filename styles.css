@@ -48,8 +48,10 @@ table {
     font-family:  Perpetua, Baskerville, Big Caslon, Palatino Linotype, Palatino, URW Palladio L, Nimbus Roman No9 L, serif;
     --primary-color: #F5F7F8;
     --secondary-color: #eedc93;
+    --tertiary-color: #cecece;
     --text-color: #45474B;
     --highlight-color: #F4CE14;
+
 
 }
 
@@ -66,6 +68,8 @@ main {
     justify-content: center;
     align-items: center;
     flex: 2;
+
+
 }
 
 .left, .right {
@@ -74,6 +78,7 @@ main {
 }
 .middle.container {
     flex-shrink: 0;
+
 }
 
 .right {
@@ -88,6 +93,7 @@ main {
     justify-content: center;
     align-items: center;
 
+
 }
 
 .figure {
@@ -95,6 +101,7 @@ main {
     text-align: center;
     flex-direction: column;
     justify-content: flex-end;
+
 
 }
 
@@ -104,11 +111,13 @@ main {
     justify-content: space-evenly;
     flex-direction: column;
     width: 100%;
+
  }
 
 .figure, .figure-text-container {
     display: flex;
     align-items: center;
+
 }
 
 .figure-num {
@@ -120,11 +129,13 @@ main {
 
 .figure-text , .unit {
     font-size: clamp(2rem, 5vw, 10rem);
+
 }
 
 .figure-text {
     color: var(--text-color);
     width: 200%;
+
 }
 
 button {
@@ -134,7 +145,7 @@ button {
     background-color: rgb(0, 0, 0, 0);
     border: none;
     font-size: clamp(2rem, 10vw, 10rem);
-    color: var(--text-color);
+    color: var(--tertiary-color);
 }
 
 button:hover {
@@ -145,5 +156,19 @@ button:hover {
     color: var(--highlight-color);
 }
 
+.tab-container {
+    position: fixed;
+    width: 50vw;
+    height: 5px;
+    bottom: 10px;
+    margin-left: 24.95vw;
+    display: flex;
+    justify-content: space-evenly;
+}
 
-
+.tab {
+    width: 10%;
+    height: 100%;
+    background-color: var(--tertiary-color);
+    border-radius: 1px;
+}
