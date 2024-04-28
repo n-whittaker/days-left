@@ -12,6 +12,7 @@ let difDays = difHours / 24;
 let difWeeks = difDays / 7;
 let difMonths = difWeeks / 4;
 let difYears = difDays / 365 * 100;
+let totalShifts = getShifts(now);
 
 let tab1 = document.querySelector('.tab1');
 let tab2 = document.querySelector('.tab2');
@@ -21,6 +22,7 @@ let tab5 = document.querySelector('.tab5');
 let tab6 = document.querySelector('.tab6');
 let tab7 = document.querySelector('.tab7');
 let tab8 = document.querySelector('.tab8');
+let tab9 = document.querySelector('.tab9');
 
 
 
@@ -31,9 +33,9 @@ const btnLeft = document.querySelector(".btnLeft")
 const btnRight = document.querySelector(".btnRight")
 
 
-const units = [difMilliSeconds, difSeconds, difMinutes, difHours, difDays, difWeeks, difMonths, difYears];
-const words = ["Milliseconds", "Seconds", "Minutes", "Hours", "Days", "Weeks", "Months", "Years"];
-const tabs = [tab1, tab2, tab3, tab4, tab5, tab6, tab7, tab8]
+const units = [difMilliSeconds, difSeconds, difMinutes, difHours, difDays, difWeeks, difMonths, difYears, totalShifts];
+const words = ["Milliseconds", "Seconds", "Minutes", "Hours", "Days", "Weeks", "Months", "Years", "Shifts"];
+const tabs = [tab1, tab2, tab3, tab4, tab5, tab6, tab7, tab8, tab9]
 let currentUnit = 0;
 
 tab1.style.backgroundColor = '#F4CE14'
@@ -65,8 +67,7 @@ btnRight.addEventListener('click', () => {
     updateTime();
     updateText();
     updateCurrentTab();
-
-
+    getShifts();
 })
 
 
@@ -110,6 +111,22 @@ function updateCurrentTab() {
     }
 
     tabs[currentUnit].style.backgroundColor = '#F4CE14';
+}
+
+function getShifts(now) {
+    let shifts = 0;
+    let currentDate = now;
+
+    while (now <= leaveDate) {
+        const day = now.getDay();
+
+        if (day !== 0 && day !== 6) {
+            shifts ++;
+        }
+
+        currentDate.setDate(currentDate.getDate() + 1);
+    }
+    return shifts
 }
 // Below line makes the code update live.
 // setInterval(updateUnits, 100);
